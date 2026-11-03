@@ -1,7 +1,5 @@
 package dev.dragonofshuu.shuuhitindication;
 
-import dev.dragonofshuu.shuuhitindication.CommonClass;
-import dev.dragonofshuu.shuuhitindication.Constants;
 import net.fabricmc.api.ModInitializer;
 
 public class ShuuMod implements ModInitializer {
@@ -17,4 +15,6 @@ public class ShuuMod implements ModInitializer {
         Constants.LOG.info("Hello Fabric world!");
         CommonClass.init();
     }
+
+    
 }

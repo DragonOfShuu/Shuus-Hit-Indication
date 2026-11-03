@@ -1,8 +1,6 @@
 package dev.dragonofshuu.shuuhitindication;
 
 import net.minecraftforge.fml.common.Mod;
-import dev.dragonofshuu.shuuhitindication.CommonClass;
-import dev.dragonofshuu.shuuhitindication.Constants;
 
 @Mod(Constants.MOD_ID)
 public class ShuuMod {
