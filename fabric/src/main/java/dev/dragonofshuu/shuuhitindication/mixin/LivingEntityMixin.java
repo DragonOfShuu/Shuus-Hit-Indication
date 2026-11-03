@@ -18,6 +18,8 @@ public class LivingEntityMixin {
     // private void onActuallyHurt(DamageSource source, float amount, CallbackInfo cir, @Local float damageAmount) {
     private void onActuallyHurt(DamageSource damageSource, float damageAmount, CallbackInfo cir) {
         // Your code here
-        Constants.LOG.info("Damage taken.");
+        var entityTakingDamage = (LivingEntity) (Object) this;
+        var entity = damageSource.getEntity();
+        Constants.LOG.info("Taking damage is {}, by {}", entityTakingDamage.toString(), entity.toString());
     }
 }

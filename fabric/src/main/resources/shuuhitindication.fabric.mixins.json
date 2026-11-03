@@ -5,12 +5,12 @@
     "refmap": "${mod_id}.refmap.json",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
+      "LivingEntityMixin"
     ],
     "client": [
         "MixinTitleScreen"
     ],
     "server": [
-        "LivingEntityMixin"
     ],
     "injectors": {
       "defaultRequire": 1
