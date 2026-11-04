@@ -5,7 +5,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import java.awt.Color;
 
 public class HitIndicatorGUI {
-    public static void renderHitIndicator(Gui gui, GuiGraphics guiGraphics, float partialTick, int screenWidth, int screenHeight) {
+    public static void render(Gui gui, GuiGraphics guiGraphics, float partialTick, int screenWidth, int screenHeight) {
         int centerX = screenWidth / 2;
         int centerY = screenHeight / 2;
 

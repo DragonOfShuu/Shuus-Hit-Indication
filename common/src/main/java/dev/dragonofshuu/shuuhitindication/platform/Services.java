@@ -4,6 +4,7 @@ import java.util.ServiceLoader;
 
 import dev.dragonofshuu.shuuhitindication.Constants;
 import dev.dragonofshuu.shuuhitindication.platform.services.IPlatformHelper;
+import dev.dragonofshuu.shuuhitindication.platform.services.INetworkHelper;
 
 // Service loaders are a built-in Java feature that allow us to locate implementations of an interface that vary from one
 // environment to another. In the context of MultiLoader we use this feature to access a mock API in the common code that
@@ -14,6 +15,7 @@ public class Services {
     // For example this can be used to check if the code is running on Forge vs Fabric, or to ask the modloader if another
     // mod is loaded.
     public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
+    public static final INetworkHelper NETWORK = load(INetworkHelper.class);
 
     // This code is used to load a service for the current environment. Your implementation of the service must be defined
     // manually by including a text file in META-INF/services named with the fully qualified class name of the service.
