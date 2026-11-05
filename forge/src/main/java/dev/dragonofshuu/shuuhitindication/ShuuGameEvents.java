@@ -1,10 +1,12 @@
 package dev.dragonofshuu.shuuhitindication;
 import dev.dragonofshuu.shuuhitindication.networking.ShuuNetworking;
+import dev.dragonofshuu.shuuhitindication.utils.DelayedClientTask;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
 @Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -19,5 +21,10 @@ public class ShuuGameEvents {
             var amount = event.getAmount();
             ShuuNetworking.sendRegisterHit((ServerPlayer) entity, amount, damageSource.getSourcePosition());
         }
+    }
+
+    @SubscribeEvent 
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        DelayedClientTask.onClientTick();
     }
 }

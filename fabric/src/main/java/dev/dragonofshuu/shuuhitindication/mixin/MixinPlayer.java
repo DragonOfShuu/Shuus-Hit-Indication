@@ -1,5 +1,4 @@
 package dev.dragonofshuu.shuuhitindication.mixin;
-import dev.dragonofshuu.shuuhitindication.Constants;
 import dev.dragonofshuu.shuuhitindication.networking.ShuuNetworking;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
