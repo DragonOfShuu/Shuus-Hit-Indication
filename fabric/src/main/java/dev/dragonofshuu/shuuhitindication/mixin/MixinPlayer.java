@@ -18,6 +18,10 @@ public class MixinPlayer {
         var entityTakingDamage = (LivingEntity) (Object) this;
         if (entityTakingDamage.isInvulnerableTo(damageSource))
             return;
-        ShuuNetworking.sendRegisterHit((ServerPlayer) entityTakingDamage, originalDamageAmount, entityTakingDamage.position()); 
+        var causingEntity = damageSource.getEntity();
+        var damageSourcePosition = causingEntity == null ? damageSource.getSourcePosition() : causingEntity.position();
+        if (damageSourcePosition == null)
+            damageSourcePosition = entityTakingDamage.position();
+        ShuuNetworking.sendRegisterHit((ServerPlayer) entityTakingDamage, originalDamageAmount, damageSourcePosition); 
     }
 }

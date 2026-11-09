@@ -15,11 +15,14 @@ public class ShuuGameEvents {
     public static void onPlayerDamage(LivingDamageEvent event) {
         // Runs on the server by default; will need a custom packet so send the hit indication to the client
         Constants.LOG.info("Damage event triggered for entity: " + event.getEntity().getName().getString());
-        if (event.getEntity() instanceof Player) {
+        if (event.getEntity() instanceof Player player) {
             var damageSource = event.getSource();
-            var entity = event.getEntity();
             var amount = event.getAmount();
-            ShuuNetworking.sendRegisterHit((ServerPlayer) entity, amount, damageSource.getSourcePosition());
+            var causingEntity = damageSource.getEntity();
+            var damageSourcePosition = causingEntity == null ? damageSource.getSourcePosition() : causingEntity.position();
+            if (damageSourcePosition == null)
+                damageSourcePosition = player.position();
+            ShuuNetworking.sendRegisterHit((ServerPlayer) player, amount, damageSourcePosition);
         }
     }
 
