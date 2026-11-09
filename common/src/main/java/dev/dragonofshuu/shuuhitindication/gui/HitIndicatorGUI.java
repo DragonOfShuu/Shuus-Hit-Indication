@@ -17,7 +17,6 @@ public class HitIndicatorGUI {
     public static void render(Gui gui, GuiGraphics guiGraphics, float partialTick, int screenWidth, int screenHeight) {
         Minecraft mc = Minecraft.getInstance();
         LocalPlayer player = mc.player;
-        // Float rotation = HitIndicatorOrchestrator.getHitRotation(player);
         boolean hasHit = HitIndicatorOrchestrator.hasHit();
         if (!hasHit) return;
 

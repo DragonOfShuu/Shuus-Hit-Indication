@@ -27,7 +27,8 @@ public class ShuuGameEvents {
     }
 
     @SubscribeEvent 
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+    public static void onClientTick(TickEvent.ClientTickEvent event) {
+        if (event.phase != TickEvent.Phase.START) return;
         DelayedClientTask.onClientTick();
     }
 }

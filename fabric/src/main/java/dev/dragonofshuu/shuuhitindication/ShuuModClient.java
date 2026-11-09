@@ -14,7 +14,7 @@ public class ShuuModClient implements ClientModInitializer {
             Minecraft mc = Minecraft.getInstance();
             HitIndicatorGUI.render(mc.gui, guiGraphics, tickDelta, mc.getWindow().getGuiScaledWidth(), mc.getWindow().getGuiScaledHeight());
         });
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+        ClientTickEvents.START_CLIENT_TICK.register(client -> {
             DelayedClientTask.onClientTick();
         });
     }
