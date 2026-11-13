@@ -9,10 +9,10 @@ import net.minecraft.world.phys.Vec3;
 
 public class HitIndicatorOrchestrator {
     private static List<HitIndicator> hitIndicators = new ArrayList<>();
-    public static final int HIT_INDICATOR_DURATION = 60;
+    // public static final int HIT_INDICATOR_DURATION = 60;
 
     public static void registerHit(Vec3 position) {
-        int waitTaskId = DelayedClientTask.runAfterTicks(HIT_INDICATOR_DURATION, (taskId) -> {
+        int waitTaskId = DelayedClientTask.runAfterTicks(ShuuConfig.getHitIndicationDuration(), (taskId) -> {
             hitIndicators.removeIf(h -> h.waitTaskId == taskId);
         });
         hitIndicators.add(new HitIndicator(position, waitTaskId));
