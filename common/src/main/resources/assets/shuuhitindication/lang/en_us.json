@@ -7,5 +7,6 @@
     "screen.shuuhitindication.red_value": "Red Value",
     "screen.shuuhitindication.green_value": "Green Value",
     "screen.shuuhitindication.blue_value": "Blue Value",
-    "screen.shuuhitindication.alpha_value": "Alpha Value"
+    "screen.shuuhitindication.alpha_value": "Alpha Value",
+    "screen.shuuhitindication.scale_value": "Scale"
 }

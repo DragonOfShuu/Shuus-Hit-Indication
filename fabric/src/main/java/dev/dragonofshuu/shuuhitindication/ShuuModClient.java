@@ -12,7 +12,7 @@ public class ShuuModClient implements ClientModInitializer {
     public void onInitializeClient() {
         HudRenderCallback.EVENT.register((guiGraphics, tickDelta) -> {
             Minecraft mc = Minecraft.getInstance();
-            HitIndicatorGUI.render(mc.gui, guiGraphics, tickDelta, mc.getWindow().getGuiScaledWidth(), mc.getWindow().getGuiScaledHeight());
+            HitIndicatorGUI.render(guiGraphics, tickDelta, mc.getWindow().getGuiScaledWidth(), mc.getWindow().getGuiScaledHeight());
         });
         ClientTickEvents.START_CLIENT_TICK.register(client -> {
             DelayedClientTask.onClientTick();

@@ -6,14 +6,13 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import dev.dragonofshuu.shuuhitindication.gui.HitIndicatorTextures;
 import dev.dragonofshuu.shuuhitindication.platform.Services;
 import net.minecraft.resources.ResourceLocation;
 
 public class ShuuConfig {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final Path CONFIG_PATH = Services.PLATFORM.getConfigDirectory().resolve(Constants.MOD_ID + ".json");
-
-    private static ResourceLocation hitIndicationTextureCache;
 
     // Static instance to access values anywhere in the mod
     private static ConfigData INSTANCE = new ConfigData();
@@ -38,7 +37,7 @@ public class ShuuConfig {
         public float hitIndicationB = 0.0F;
         public float hitIndicationA = 0.5F;
         public float hitIndicationScale = 3.0F;
-        public String hitIndicationTexture = "textures/gui/hit-indicator-thin.png";
+        public String hitIndicationTexture = HitIndicatorTextures.DEFAULT.getName();
 
         public int getVersion() {
             return ShuuConfig.getVersion();
@@ -116,6 +115,11 @@ public class ShuuConfig {
         return INSTANCE.hitIndicationA;
     }
 
+    public static void setHitIndicationScale(float scale) {
+        INSTANCE.hitIndicationScale = scale;
+        softVersion++;
+    }
+
     public static float getHitIndicationScale() {
         return INSTANCE.hitIndicationScale;
     }
@@ -124,23 +128,17 @@ public class ShuuConfig {
         return Math.min(1.0F, Math.max(v, 0.0F));
     }
 
-    public static void setHitIndicationTexture(String texture) {
-        INSTANCE.hitIndicationTexture = texture;
-        hitIndicationTextureCache = null;
+    public static void setHitIndicationTexture(String name) {
+        INSTANCE.hitIndicationTexture = name;
         softVersion++;
     }
 
-    public static void setHitIndicationTexture(ResourceLocation texture) {
-        INSTANCE.hitIndicationTexture = texture.toString();
-        hitIndicationTextureCache = texture;
-        softVersion++;
+    public static String getHitIndicationTextureName() {
+        return INSTANCE.hitIndicationTexture;
     }
 
     public static ResourceLocation getHitIndicationTexture() {
-        if (hitIndicationTextureCache == null) {
-            hitIndicationTextureCache = ResourceLocation.tryParse(INSTANCE.hitIndicationTexture);
-        }
-        return hitIndicationTextureCache;
+        return HitIndicatorTextures.getNameOrDefault(INSTANCE.hitIndicationTexture).getResourceLocation();
     }
 
     public static void load() {

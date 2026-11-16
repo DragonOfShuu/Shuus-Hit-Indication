@@ -1,6 +1,7 @@
 package dev.dragonofshuu.shuuhitindication.gui;
 
 import dev.dragonofshuu.shuuhitindication.ShuuConfig;
+import net.minecraft.resources.ResourceLocation;
 
 public class HitIndicatorSettings {
     public float r;
@@ -9,13 +10,13 @@ public class HitIndicatorSettings {
     public float a;
     public float duration;
     public float scale;
-    public String texture;
+    public ResourceLocation texture;
 
     private static HitIndicatorSettings DEFAULT_INSTANCE;
     private static int matchedVersion;
     private static int matchedSoftVersion;
 
-    public HitIndicatorSettings(float r, float g, float b, float a, float duration, float scale, String texture) {
+    public HitIndicatorSettings(float r, float g, float b, float a, float duration, float scale, ResourceLocation texture) {
         this.r = r;
         this.g = g;
         this.b = b;
@@ -42,7 +43,7 @@ public class HitIndicatorSettings {
             ShuuConfig.getHitIndicationA(),
             ShuuConfig.getHitIndicationDuration(),
             ShuuConfig.getHitIndicationScale(),
-            ShuuConfig.getHitIndicationTexture().toString()
+            ShuuConfig.getHitIndicationTexture()
         );
     }
 
@@ -54,7 +55,7 @@ public class HitIndicatorSettings {
         this.a = ShuuConfig.getHitIndicationA();
         this.duration = ShuuConfig.getHitIndicationDuration();
         this.scale = ShuuConfig.getHitIndicationScale();
-        this.texture = ShuuConfig.getHitIndicationTexture().toString();
+        this.texture = ShuuConfig.getHitIndicationTexture();
         matchedSoftVersion = ShuuConfig.getSoftVersion();
         return this;
     }
