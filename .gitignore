@@ -21,3 +21,7 @@ build
 # other
 eclipse
 run
+
+# Forge
+config/*.toml
+logs/*

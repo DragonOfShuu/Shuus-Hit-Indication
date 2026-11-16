@@ -3,5 +3,9 @@
 
     "screen.shuuhitindication.hit_indicator_options": "Hit Indicator Options",
     "screen.shuuhitindication.hit_enabled": "Hit Enabled",
-    "screen.shuuhitindication.hit_disabled": "Hit Disabled"
+    "screen.shuuhitindication.hit_disabled": "Hit Disabled",
+    "screen.shuuhitindication.red_value": "Red Value",
+    "screen.shuuhitindication.green_value": "Green Value",
+    "screen.shuuhitindication.blue_value": "Blue Value",
+    "screen.shuuhitindication.alpha_value": "Alpha Value"
 }

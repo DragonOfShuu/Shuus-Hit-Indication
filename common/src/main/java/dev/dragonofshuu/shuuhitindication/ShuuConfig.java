@@ -15,8 +15,20 @@ public class ShuuConfig {
 
     private static ResourceLocation hitIndicationTextureCache;
 
-    // Static instance to access values anywhere in your mod
+    // Static instance to access values anywhere in the mod
     private static ConfigData INSTANCE = new ConfigData();
+
+    // A way to keep track of when the configuration changes
+    private static int version = 1;
+    private static int softVersion = 1;
+
+    public static int getVersion() {
+        return version;
+    }
+
+    public static int getSoftVersion() {
+        return softVersion;
+    }
 
     public static class ConfigData {
         public boolean enableHitIndication = true;
@@ -25,11 +37,17 @@ public class ShuuConfig {
         public float hitIndicationG = 0.0F;
         public float hitIndicationB = 0.0F;
         public float hitIndicationA = 0.5F;
+        public float hitIndicationScale = 3.0F;
         public String hitIndicationTexture = "textures/gui/hit-indicator-thin.png";
+
+        public int getVersion() {
+            return ShuuConfig.getVersion();
+        }
     }
 
     public static void setEnableHitIndication(boolean enable) {
         INSTANCE.enableHitIndication = enable;
+        softVersion++;
     }
 
     public static boolean isHitIndicationEnabled() {
@@ -39,6 +57,7 @@ public class ShuuConfig {
     public static void setHitIndicationDuration(int duration) {
         int newValue = Math.min(120, Math.max(duration, 10));
         INSTANCE.hitIndicationDuration = newValue;
+        softVersion++;
     }
 
     public static int getHitIndicationDuration() {
@@ -50,6 +69,27 @@ public class ShuuConfig {
         INSTANCE.hitIndicationG = validateHitValue(g);
         INSTANCE.hitIndicationB = validateHitValue(b);
         INSTANCE.hitIndicationA = validateHitValue(a);
+        softVersion++;
+    }
+
+    public static void setHitIndicationR(float r) {
+        INSTANCE.hitIndicationR = validateHitValue(r);
+        softVersion++;
+    }
+
+    public static void setHitIndicationG(float g) {
+        INSTANCE.hitIndicationG = validateHitValue(g);
+        softVersion++;
+    }
+
+    public static void setHitIndicationB(float b) {
+        INSTANCE.hitIndicationB = validateHitValue(b);
+        softVersion++;
+    }
+
+    public static void setHitIndicationA(float a) {
+        INSTANCE.hitIndicationA = validateHitValue(a);
+        softVersion++;
     }
 
     public static int getHitIndicationColor() {
@@ -76,6 +116,10 @@ public class ShuuConfig {
         return INSTANCE.hitIndicationA;
     }
 
+    public static float getHitIndicationScale() {
+        return INSTANCE.hitIndicationScale;
+    }
+
     private static float validateHitValue(float v) {
         return Math.min(1.0F, Math.max(v, 0.0F));
     }
@@ -83,11 +127,13 @@ public class ShuuConfig {
     public static void setHitIndicationTexture(String texture) {
         INSTANCE.hitIndicationTexture = texture;
         hitIndicationTextureCache = null;
+        softVersion++;
     }
 
     public static void setHitIndicationTexture(ResourceLocation texture) {
         INSTANCE.hitIndicationTexture = texture.toString();
         hitIndicationTextureCache = texture;
+        softVersion++;
     }
 
     public static ResourceLocation getHitIndicationTexture() {
@@ -123,5 +169,6 @@ public class ShuuConfig {
         } catch (IOException e) {
             Constants.LOG.error("Failed to save config :(", e);
         }
+        version += 1;
     }
 }
