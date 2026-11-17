@@ -38,6 +38,11 @@ public class ShuuConfig {
         public float hitIndicationA = 0.5F;
         public float hitIndicationScale = 3.0F;
         public String hitIndicationTexture = HitIndicatorTextures.DEFAULT.getName();
+        
+        public boolean externalDamageOnly = false;
+        public int maximumHits = 5;
+
+        public boolean showBackground = true;
 
         public int getVersion() {
             return ShuuConfig.getVersion();
@@ -139,6 +144,33 @@ public class ShuuConfig {
 
     public static ResourceLocation getHitIndicationTexture() {
         return HitIndicatorTextures.getNameOrDefault(INSTANCE.hitIndicationTexture).getResourceLocation();
+    }
+
+    public static boolean isExternalDamageOnly() {
+        return INSTANCE.externalDamageOnly;
+    }
+
+    public static void setExternalDamageOnly(boolean externalDamageOnly) {
+        INSTANCE.externalDamageOnly = externalDamageOnly;
+        softVersion++;
+    }
+
+    public static boolean isShowBackground() {
+        return INSTANCE.showBackground;
+    }
+
+    public static void setShowBackground(boolean showBackground) {
+        INSTANCE.showBackground = showBackground;
+        softVersion++;
+    }
+
+    public static int getMaximumHits() {
+        return INSTANCE.maximumHits;
+    }
+
+    public static void setMaximumHits(int maximumHits) {
+        INSTANCE.maximumHits = maximumHits;
+        softVersion++;
     }
 
     public static void load() {

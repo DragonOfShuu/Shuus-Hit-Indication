@@ -1,4 +1,5 @@
 package dev.dragonofshuu.shuuhitindication.mixin;
+import dev.dragonofshuu.shuuhitindication.ShuuConfig;
 import dev.dragonofshuu.shuuhitindication.networking.ShuuNetworking;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -20,8 +21,11 @@ public class MixinPlayer {
             return;
         var causingEntity = damageSource.getEntity();
         var damageSourcePosition = causingEntity == null ? damageSource.getSourcePosition() : causingEntity.position();
-        if (damageSourcePosition == null)
+        if (damageSourcePosition == null) {
+            if (ShuuConfig.isExternalDamageOnly())
+                return;
             damageSourcePosition = entityTakingDamage.position();
+        }
         ShuuNetworking.sendRegisterHit((ServerPlayer) entityTakingDamage, originalDamageAmount, damageSourcePosition); 
     }
 }

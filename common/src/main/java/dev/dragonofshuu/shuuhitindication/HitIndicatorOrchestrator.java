@@ -15,7 +15,15 @@ public class HitIndicatorOrchestrator {
         int waitTaskId = DelayedClientTask.runAfterTicks(ShuuConfig.getHitIndicationDuration(), (taskId) -> {
             hitIndicators.removeIf(h -> h.waitTaskId == taskId);
         });
-        hitIndicators.add(new HitIndicator(position, waitTaskId));
+        addHitIndicator(new HitIndicator(position, waitTaskId));
+    }
+
+    private static void addHitIndicator(HitIndicator hit) {
+        if (hitIndicators.size() >= ShuuConfig.getMaximumHits()) {
+            var oldHit = hitIndicators.remove(0);
+            oldHit.cancel();
+        }
+        hitIndicators.add(hit);
     }
 
     public static boolean hasHit() {
@@ -29,6 +37,10 @@ public class HitIndicatorOrchestrator {
     public static record HitIndicator(Vec3 hitPosition, int waitTaskId) {
         public DelayedClientTask.PendingTask getWaitTask() {
             return DelayedClientTask.getTask(waitTaskId);
+        }
+
+        public void cancel() {
+            DelayedClientTask.cancelTask(getWaitTask().ID);
         }
 
         public Float getHitRotation(Player relativeTo) {

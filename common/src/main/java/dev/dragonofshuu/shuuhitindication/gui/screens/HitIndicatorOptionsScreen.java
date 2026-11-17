@@ -1,4 +1,5 @@
 package dev.dragonofshuu.shuuhitindication.gui.screens;
+
 import dev.dragonofshuu.shuuhitindication.ShuuConfig;
 import dev.dragonofshuu.shuuhitindication.gui.HitIndicatorTextures;
 import dev.dragonofshuu.shuuhitindication.gui.components.HitIndicator;
@@ -24,16 +25,19 @@ public class HitIndicatorOptionsScreen extends Screen {
     private static final Component BLUE_VALUE = Component.translatable("screen.shuuhitindication.blue_value");
     private static final Component ALPHA_VALUE = Component.translatable("screen.shuuhitindication.alpha_value");
     private static final Component SCALE_VALUE = Component.translatable("screen.shuuhitindication.scale_value");
+    private static final Component VISUALIZE_SCREEN_LINK = Component.translatable("screen.shuuhitindication.visualize_screen_link");
+    private static final Component ADVANCED_SCREEN_LINK = Component
+            .translatable("screen.shuuhitindication.advanced_screen_link");
 
     private static final int BASE_WIDTH = 150;
 
-    private final Screen previousScreen; 
+    private final Screen previousScreen;
 
     public HitIndicatorOptionsScreen(Screen previousScreen) {
         super(TITLE);
         this.previousScreen = previousScreen;
     }
-    
+
     @Override
     protected void init() {
         GridLayout gridLayout = new GridLayout();
@@ -43,38 +47,55 @@ public class HitIndicatorOptionsScreen extends Screen {
         rowHelper.addChild(Button.builder(ShuuConfig.isHitIndicationEnabled() ? HIT_ENABLED : HIT_DISABLED, button -> {
             ShuuConfig.setEnableHitIndication(!ShuuConfig.isHitIndicationEnabled());
             button.setMessage(ShuuConfig.isHitIndicationEnabled() ? HIT_ENABLED : HIT_DISABLED);
-        }).width(BASE_WIDTH*2).build(), 2, gridLayout.newCellSettings());
+        }).width(BASE_WIDTH - 4).build(), 1, gridLayout.newCellSettings());
 
-        rowHelper.addChild(CycleButton
-            .<HitIndicatorTextures.Texture>builder(item -> Component.literal(item.getName()))
+        rowHelper.addChild(Button
+                .builder(ADVANCED_SCREEN_LINK,
+                        button -> this.minecraft.setScreen(new HitIndicatorAdvancedOptionsScreen(this)))
+                .width(BASE_WIDTH - 4).build(), 1, gridLayout.newCellSettings());
+
+        rowHelper.addChild(CycleButton.<HitIndicatorTextures.Texture>builder(item -> Component.literal(item.getName()))
                 .withValues(HitIndicatorTextures.ALL)
                 .withInitialValue(HitIndicatorTextures
-                    .getByName(ShuuConfig.getHitIndicationTextureName()))
-                .create(0, 0, BASE_WIDTH - 4, 20, Component.literal("Texture"), (button, texture) -> ShuuConfig.setHitIndicationTexture(texture.getName())));
+                        .getByName(ShuuConfig.getHitIndicationTextureName()))
+                .create(0, 0, BASE_WIDTH - 4, 20, Component.literal("Texture"),
+                        (button, texture) -> ShuuConfig.setHitIndicationTexture(texture.getName())));
 
-        // rowHelper.addChild(Slider.builder().width(BASE_WIDTH - 4).message(SCALE_VALUE).value(ShuuConfig.getHitIndicationScale()).onValueChanged(value -> ShuuConfig.setHitIndicationScale(value.floatValue())).build());
         rowHelper.addChild(CycleButton
-            .<Float>builder(value -> Component.literal(String.valueOf(value)))
-                .withValues(1f, 2f, 3f, 4f, 5f, 6f)
+                .<Float>builder(value -> Component.literal(String.valueOf(value)))
+                .withValues(1f, 2f, 3f, 4f, 5f, 6f, 8f, 10f, 12f)
                 .withInitialValue(ShuuConfig.getHitIndicationScale())
-                .create(0, 0, BASE_WIDTH - 4, 20, SCALE_VALUE, (button, scale) -> ShuuConfig.setHitIndicationScale(scale)));
+                .create(0, 0, BASE_WIDTH - 4, 20, SCALE_VALUE,
+                        (button, scale) -> ShuuConfig.setHitIndicationScale(scale)));
 
-        rowHelper.addChild(Slider.builder().width(BASE_WIDTH - 4).message(RED_VALUE).value(ShuuConfig.getHitIndicationR()).onValueChanged(value -> ShuuConfig.setHitIndicationR(value.floatValue())).build());
-        rowHelper.addChild(Slider.builder().width(BASE_WIDTH - 4).message(GREEN_VALUE).value(ShuuConfig.getHitIndicationG()).onValueChanged(value -> ShuuConfig.setHitIndicationG(value.floatValue())).build());
-        rowHelper.addChild(Slider.builder().width(BASE_WIDTH - 4).message(BLUE_VALUE).value(ShuuConfig.getHitIndicationB()).onValueChanged(value -> ShuuConfig.setHitIndicationB(value.floatValue())).build());
-        rowHelper.addChild(Slider.builder().width(BASE_WIDTH - 4).message(ALPHA_VALUE).value(ShuuConfig.getHitIndicationA()).onValueChanged(value -> ShuuConfig.setHitIndicationA(value.floatValue())).build());
-        
-        // rowHelper.addChild(new Rect(60, 60, 0xFF000000, 0XFFFFFFFF), 2, gridLayout.newCellSettings().alignHorizontallyCenter());
+        rowHelper.addChild(
+                Slider.builder().width(BASE_WIDTH - 4).message(RED_VALUE).value(ShuuConfig.getHitIndicationR())
+                        .onValueChanged(value -> ShuuConfig.setHitIndicationR(value.floatValue())).build());
+        rowHelper.addChild(
+                Slider.builder().width(BASE_WIDTH - 4).message(GREEN_VALUE).value(ShuuConfig.getHitIndicationG())
+                        .onValueChanged(value -> ShuuConfig.setHitIndicationG(value.floatValue())).build());
+        rowHelper.addChild(
+                Slider.builder().width(BASE_WIDTH - 4).message(BLUE_VALUE).value(ShuuConfig.getHitIndicationB())
+                        .onValueChanged(value -> ShuuConfig.setHitIndicationB(value.floatValue())).build());
+        rowHelper.addChild(
+                Slider.builder().width(BASE_WIDTH - 4).message(ALPHA_VALUE).value(ShuuConfig.getHitIndicationA())
+                        .onValueChanged(value -> ShuuConfig.setHitIndicationA(value.floatValue())).build());
+
         Panel panel = new Panel(1, 2, 0xFF000000, 0XFFFFFFFF);
         panel.addChild(new HitIndicator(0, 0, 60, 60, Component.empty()));
         rowHelper.addChild(panel.build(), 2, gridLayout.newCellSettings().alignHorizontallyCenter());
+        rowHelper.addChild(
+                Button.builder(VISUALIZE_SCREEN_LINK,
+                        button -> this.minecraft.setScreen(new HitIndicatorPreviewScreen(this))).width(60).build(),
+                2, gridLayout.newCellSettings().alignHorizontallyCenter());
 
-        rowHelper.addChild(Button.builder(DONE, (button) -> this.minecraft.setScreen(this.previousScreen)).width(BASE_WIDTH*2).build(), 2);
+        rowHelper.addChild(Button.builder(DONE, (button) -> this.minecraft.setScreen(this.previousScreen))
+                .width(BASE_WIDTH * 2).build(), 2);
 
         gridLayout.arrangeElements();
-        
+
         FrameLayout.alignInRectangle(gridLayout, 0, 0, width, height, 0.5F, 0.25F);
-        
+
         gridLayout.visitWidgets(this::addRenderableWidget);
     }
 

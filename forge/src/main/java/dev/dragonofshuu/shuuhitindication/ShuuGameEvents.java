@@ -20,8 +20,11 @@ public class ShuuGameEvents {
             var amount = event.getAmount();
             var causingEntity = damageSource.getEntity();
             var damageSourcePosition = causingEntity == null ? damageSource.getSourcePosition() : causingEntity.position();
-            if (damageSourcePosition == null)
+            if (damageSourcePosition == null) {
+                if (ShuuConfig.isExternalDamageOnly())
+                    return;
                 damageSourcePosition = player.position();
+            }
             ShuuNetworking.sendRegisterHit((ServerPlayer) player, amount, damageSourcePosition);
         }
     }
