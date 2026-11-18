@@ -55,7 +55,7 @@ public class HitIndicatorOptionsScreen extends Screen {
                 .width(BASE_WIDTH - 4).build(), 1, gridLayout.newCellSettings());
 
         rowHelper.addChild(CycleButton.<HitIndicatorTextures.Texture>builder(item -> Component.literal(item.getName()))
-                .withValues(HitIndicatorTextures.ALL)
+                .withValues(HitIndicatorTextures.getAll())
                 .withInitialValue(HitIndicatorTextures
                         .getByName(ShuuConfig.getHitIndicationTextureName()))
                 .create(0, 0, BASE_WIDTH - 4, 20, Component.literal("Texture"),

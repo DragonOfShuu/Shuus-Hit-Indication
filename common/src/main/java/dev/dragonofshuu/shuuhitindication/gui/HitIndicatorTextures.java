@@ -4,6 +4,8 @@ import dev.dragonofshuu.shuuhitindication.Constants;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HitIndicatorTextures {
     public static final Texture THIN_TRIANGLE = new Texture("textures/gui/hit-indicator-thin-triangle.png", "Thin Triangle");
@@ -37,15 +39,30 @@ public class HitIndicatorTextures {
 
     public static final Texture DEFAULT = THIN;
 
-    public static final Texture[] ALL = new Texture[] {
-        THIN_TRIANGLE,
-        TRIANGLE,
-        THIN,
-        SIMPLE_TRIANGLE_2,
-        THIN_2,
-        THIN_SHARP_TRIANGLE_2,
-        THIN_TRIANGLE_2
-    };
+    private static final List<Texture> ALL = new ArrayList<Texture>() {{
+        add(THIN_TRIANGLE);
+        add(TRIANGLE);
+        add(THIN);
+        add(SIMPLE_TRIANGLE_2);
+        add(THIN_2);
+        add(THIN_SHARP_TRIANGLE_2);
+        add(THIN_TRIANGLE_2);
+    }};
+
+    public static Texture[] getAll() {
+        return ALL.toArray(new Texture[0]);
+    }
+
+    /**
+     * Intended for mod developers to add custom hit indicator textures.
+     * Make sure your mod runs after this mod, then call this method in your mod's initialization code.
+     * @param texture The texture to add.
+     */
+    public static void addTexture(Texture texture) {
+        ALL.add(texture);
+        // Reset cache
+        TEXTURE_MAP = null;
+    }
 
     public static class Texture {
         private final String TEXTURE_PATH;
