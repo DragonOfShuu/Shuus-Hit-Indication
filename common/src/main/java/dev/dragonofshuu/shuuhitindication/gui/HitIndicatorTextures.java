@@ -9,6 +9,10 @@ public class HitIndicatorTextures {
     public static final Texture THIN_TRIANGLE = new Texture("textures/gui/hit-indicator-thin-triangle.png", "Thin Triangle");
     public static final Texture TRIANGLE = new Texture("textures/gui/hit-indicator-triangle.png", "Triangle");
     public static final Texture THIN = new Texture("textures/gui/hit-indicator-thin.png", "Thin");
+    public static final Texture SIMPLE_TRIANGLE_2 = new Texture("textures/gui/hit-indicator-simple-triangle-2.png", "Simple Triangle 2");
+    public static final Texture THIN_2 = new Texture("textures/gui/hit-indicator-thin-2.png", "Thin 2");
+    public static final Texture THIN_SHARP_TRIANGLE_2 = new Texture("textures/gui/hit-indicator-thin-sharp-triangle-2.png", "Thin Sharp Triangle");
+    public static final Texture THIN_TRIANGLE_2 = new Texture("textures/gui/hit-indicator-thin-triangle-2.png", "Thin Triangle 2");
 
     private static HashMap<String, Texture> TEXTURE_MAP = null;
 
@@ -36,7 +40,11 @@ public class HitIndicatorTextures {
     public static final Texture[] ALL = new Texture[] {
         THIN_TRIANGLE,
         TRIANGLE,
-        THIN
+        THIN,
+        SIMPLE_TRIANGLE_2,
+        THIN_2,
+        THIN_SHARP_TRIANGLE_2,
+        THIN_TRIANGLE_2
     };
 
     public static class Texture {

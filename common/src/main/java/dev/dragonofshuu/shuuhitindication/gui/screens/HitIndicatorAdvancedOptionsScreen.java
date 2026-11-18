@@ -40,13 +40,13 @@ public class HitIndicatorAdvancedOptionsScreen extends Screen {
 
         rowHelper.addChild(CycleButton
                 .<Boolean>builder(value -> value ? CommonComponents.GUI_YES : CommonComponents.GUI_NO)
-                .withValues(true, false).withInitialValue(ShuuConfig.isExternalDamageOnly()).create(0, 0, BASE_WIDTH,
+                .withValues(true, false).withInitialValue(ShuuConfig.isExternalDamageOnly()).create(0, 0, BASE_WIDTH-4,
                         20, IS_EXTERNAL_DAMAGE_ONLY, (button, value) -> ShuuConfig.setExternalDamageOnly(value)));
 
         rowHelper.addChild(CycleButton
                 .<Integer>builder(value -> Component.literal(value.toString()))
                 .withValues(1, 2, 3, 4, 5, 6, 8, 10, 12).withInitialValue(ShuuConfig.getMaximumHits()).create(0, 0,
-                        BASE_WIDTH,
+                        BASE_WIDTH-4,
                         20, Component.translatable("screen.shuuhitindication.advanced_options.maximum_hits"),
                         (button, value) -> ShuuConfig.setMaximumHits(value)));
 
