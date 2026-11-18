@@ -59,7 +59,7 @@ public class ShuuConfig {
     }
 
     public static void setHitIndicationDuration(int duration) {
-        int newValue = Math.min(120, Math.max(duration, 10));
+        int newValue = Math.min(140, Math.max(duration, 10));
         INSTANCE.hitIndicationDuration = newValue;
         softVersion++;
     }

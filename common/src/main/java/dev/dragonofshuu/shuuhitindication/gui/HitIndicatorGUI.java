@@ -3,14 +3,12 @@ package dev.dragonofshuu.shuuhitindication.gui;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.math.Axis;
 
-import dev.dragonofshuu.shuuhitindication.Constants;
 import dev.dragonofshuu.shuuhitindication.HitIndicatorOrchestrator;
 import dev.dragonofshuu.shuuhitindication.ShuuConfig;
 import dev.dragonofshuu.shuuhitindication.HitIndicatorOrchestrator.HitIndicator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.resources.ResourceLocation;
 
 public class HitIndicatorGUI {
     public static void render(GuiGraphics guiGraphics, float partialTick, int screenWidth, int screenHeight) {
@@ -63,8 +61,8 @@ public class HitIndicatorGUI {
 
     public static float calculateAlpha(HitIndicatorSettings settings, float remainingTicks, float partialTick) {
         float maximumAlpha = settings.a;
-        float timeBeforeFade = Math.min(20, Math.max(settings.duration, 0));
-        float alpha = (float) Math.min((remainingTicks - partialTick) / (settings.duration - timeBeforeFade), maximumAlpha);
+        float fadeDuration = Math.min(30, Math.max(settings.duration, 0));
+        float alpha = (float) Math.min((remainingTicks - partialTick) / fadeDuration, maximumAlpha);
         return alpha;
     }
 }

@@ -17,5 +17,6 @@
     "screen.shuuhitindication.advanced_options": "Advanced Options",
     "screen.shuuhitindication.advanced_screen_link": "Advanced...",
     "screen.shuuhitindication.advanced_options.is_external_damage_only": "External Damage Only",
+    "screen.shuuhitindication.advanced_options.duration": "Duration",
     "screen.shuuhitindication.advanced_options.maximum_hits": "Maximum Hits"
 }
