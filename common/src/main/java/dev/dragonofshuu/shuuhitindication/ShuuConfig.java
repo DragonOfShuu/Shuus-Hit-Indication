@@ -7,8 +7,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import dev.dragonofshuu.shuuhitindication.gui.HitIndicatorTextures;
+import dev.dragonofshuu.shuuhitindication.gui.HitIndicatorTextures.Texture;
 import dev.dragonofshuu.shuuhitindication.platform.Services;
-import net.minecraft.resources.ResourceLocation;
 
 public class ShuuConfig {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
@@ -35,7 +35,7 @@ public class ShuuConfig {
         public float hitIndicationR = 1.0F;
         public float hitIndicationG = 0.0F;
         public float hitIndicationB = 0.0F;
-        public float hitIndicationA = 0.5F;
+        public float hitIndicationA = 0.75F;
         public float hitIndicationScale = 3.0F;
         public String hitIndicationTexture = HitIndicatorTextures.DEFAULT.getName();
         
@@ -142,8 +142,8 @@ public class ShuuConfig {
         return INSTANCE.hitIndicationTexture;
     }
 
-    public static ResourceLocation getHitIndicationTexture() {
-        return HitIndicatorTextures.getNameOrDefault(INSTANCE.hitIndicationTexture).getResourceLocation();
+    public static Texture getHitIndicationTexture() {
+        return HitIndicatorTextures.getNameOrDefault(INSTANCE.hitIndicationTexture);
     }
 
     public static boolean isExternalDamageOnly() {

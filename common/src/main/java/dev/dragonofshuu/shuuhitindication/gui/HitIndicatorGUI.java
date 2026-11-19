@@ -47,7 +47,10 @@ public class HitIndicatorGUI {
         guiGraphics.pose().translate(centerX, centerY, 0);
         guiGraphics.pose().mulPose(Axis.ZP.rotation(rotation));
         guiGraphics.pose().scale(settings.scale, settings.scale, settings.scale);
-        guiGraphics.blit(settings.texture, -25 + x, -25 + y, 0, 0, 50, 50, 50, 50);
+        var texture = settings.texture;
+        var texWidth = texture.getTextureWidth();
+        var texHeight = texture.getTextureHeight();
+        guiGraphics.blit(texture.getResourceLocation(), -texWidth / 2 + x, -texHeight / 2 + y, 0, 0, texWidth, texHeight, texWidth, texHeight);
     
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.disableBlend();

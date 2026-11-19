@@ -8,18 +8,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HitIndicatorTextures {
-    public static final Texture THIN_TRIANGLE = new Texture("textures/gui/hit-indicator-thin-triangle.png", "Thin Triangle");
-    public static final Texture TRIANGLE = new Texture("textures/gui/hit-indicator-triangle.png", "Triangle");
-    public static final Texture THIN = new Texture("textures/gui/hit-indicator-thin.png", "Thin");
-    public static final Texture SIMPLE_TRIANGLE_2 = new Texture("textures/gui/hit-indicator-simple-triangle-2.png", "Simple Triangle 2");
-    public static final Texture THIN_2 = new Texture("textures/gui/hit-indicator-thin-2.png", "Thin 2");
-    public static final Texture THIN_SHARP_TRIANGLE_2 = new Texture("textures/gui/hit-indicator-thin-sharp-triangle-2.png", "Thin Sharp Triangle");
-    public static final Texture THIN_TRIANGLE_2 = new Texture("textures/gui/hit-indicator-thin-triangle-2.png", "Thin Triangle 2");
-
     private static HashMap<String, Texture> TEXTURE_MAP = null;
+    private static final List<Texture> ALL = new ArrayList<Texture>(); 
+
+    public static final Texture THIN_TRIANGLE = registerTexture("textures/gui/hit-indicator-thin-triangle.png",
+            "Thin Triangle");
+    public static final Texture TRIANGLE = registerTexture("textures/gui/hit-indicator-triangle.png", "Triangle");
+    public static final Texture THIN = registerTexture("textures/gui/hit-indicator-thin.png", "Thin");
+    public static final Texture SIMPLE_TRIANGLE_2 = registerTexture("textures/gui/hit-indicator-simple-triangle-2.png",
+            "Simple Triangle 2");
+    public static final Texture THIN_2 = registerTexture("textures/gui/hit-indicator-thin-2.png", "Thin 2");
+    public static final Texture THIN_SHARP_TRIANGLE_2 = registerTexture(
+            "textures/gui/hit-indicator-thin-sharp-triangle-2.png", "Thin Sharp Triangle");
+    public static final Texture THIN_TRIANGLE_2 = registerTexture("textures/gui/hit-indicator-thin-triangle-2.png",
+            "Thin Triangle 2");
 
     public static HashMap<String, Texture> getTextureMap() {
-        if (TEXTURE_MAP != null) return TEXTURE_MAP;
+        if (TEXTURE_MAP != null)
+            return TEXTURE_MAP;
 
         TEXTURE_MAP = new HashMap<>();
         for (Texture texture : ALL) {
@@ -28,7 +34,7 @@ public class HitIndicatorTextures {
 
         return TEXTURE_MAP;
     }
-    
+
     public static Texture getByName(String name) {
         return getTextureMap().get(name);
     }
@@ -37,17 +43,7 @@ public class HitIndicatorTextures {
         return getTextureMap().getOrDefault(name, DEFAULT);
     }
 
-    public static final Texture DEFAULT = THIN;
-
-    private static final List<Texture> ALL = new ArrayList<Texture>() {{
-        add(THIN_TRIANGLE);
-        add(TRIANGLE);
-        add(THIN);
-        add(SIMPLE_TRIANGLE_2);
-        add(THIN_2);
-        add(THIN_SHARP_TRIANGLE_2);
-        add(THIN_TRIANGLE_2);
-    }};
+    public static final Texture DEFAULT = THIN_TRIANGLE_2;
 
     public static Texture[] getAll() {
         return ALL.toArray(new Texture[0]);
@@ -55,24 +51,41 @@ public class HitIndicatorTextures {
 
     /**
      * Intended for mod developers to add custom hit indicator textures.
-     * Make sure your mod runs after this mod, then call this method in your mod's initialization code.
+     * Make sure your mod runs after this mod, then call this method in your mod's
+     * initialization code.
+     * 
      * @param texture The texture to add.
      */
-    public static void addTexture(Texture texture) {
+    public static Texture registerTexture(String texturePath, String name) {
+        return registerTexture(new Texture(texturePath, name));
+    }
+
+    public static Texture registerTexture(Texture texture) {
         ALL.add(texture);
         // Reset cache
         TEXTURE_MAP = null;
+        return texture;
     }
 
     public static class Texture {
         private final String TEXTURE_PATH;
         private final String NAME;
+        private final int TEXTURE_WIDTH;
+        private final int TEXTURE_HEIGHT;
 
         private final ResourceLocation RESOURCE_LOCATION;
 
-        public Texture(String TEXTURE_PATH, String NAME) {
-            this.TEXTURE_PATH = TEXTURE_PATH;
-            this.NAME = NAME;
+        private static final int DEFAULT_SIZE = 50;
+
+        public Texture(String texturePath, String name) {
+            this(texturePath, name, DEFAULT_SIZE, DEFAULT_SIZE);
+        }
+
+        public Texture(String texturePath, String name, int textureWidth, int textureHeight) {
+            this.TEXTURE_PATH = texturePath;
+            this.NAME = name;
+            this.TEXTURE_WIDTH = textureWidth;
+            this.TEXTURE_HEIGHT = textureHeight;
 
             this.RESOURCE_LOCATION = new ResourceLocation(Constants.MOD_ID, TEXTURE_PATH);
         }
@@ -87,6 +100,14 @@ public class HitIndicatorTextures {
 
         public ResourceLocation getResourceLocation() {
             return RESOURCE_LOCATION;
+        }
+
+        public int getTextureWidth() {
+            return TEXTURE_WIDTH;
+        }
+
+        public int getTextureHeight() {
+            return TEXTURE_HEIGHT;
         }
     }
 }

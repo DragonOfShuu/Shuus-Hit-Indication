@@ -25,7 +25,7 @@ Then, you can also visualize what the indicator looks like on your screen:
 
 ## For Modders
 
-Adding more hit indicator textures is super easy. In the class `HitIndicatorTextures.java`, there is a function called `addTexture`; use this to add textures. Make sure to load your mod after this one, and run this function in your mod initialization. This will hook it in, and will later cache the name with the texture. 
+Adding more hit indicator textures is super easy. In the class `HitIndicatorTextures.java`, there is a function called `registerTexture`; use this to add textures. Make sure to load your mod after this one, and run this function in your mod initialization. This will hook it in, and will later cache the name with the texture. 
 
 ## Note on AI
 

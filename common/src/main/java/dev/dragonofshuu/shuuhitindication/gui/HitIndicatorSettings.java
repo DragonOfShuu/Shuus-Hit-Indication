@@ -1,7 +1,7 @@
 package dev.dragonofshuu.shuuhitindication.gui;
 
 import dev.dragonofshuu.shuuhitindication.ShuuConfig;
-import net.minecraft.resources.ResourceLocation;
+import dev.dragonofshuu.shuuhitindication.gui.HitIndicatorTextures.Texture;
 
 public class HitIndicatorSettings {
     public float r;
@@ -10,13 +10,13 @@ public class HitIndicatorSettings {
     public float a;
     public float duration;
     public float scale;
-    public ResourceLocation texture;
+    public Texture texture;
 
     private static HitIndicatorSettings DEFAULT_INSTANCE;
     private static int matchedVersion;
     private static int matchedSoftVersion;
 
-    public HitIndicatorSettings(float r, float g, float b, float a, float duration, float scale, ResourceLocation texture) {
+    public HitIndicatorSettings(float r, float g, float b, float a, float duration, float scale, Texture texture) {
         this.r = r;
         this.g = g;
         this.b = b;
