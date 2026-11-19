@@ -54,8 +54,14 @@ public class HitIndicatorTextures {
      * Make sure your mod runs after this mod, then call this method in your mod's
      * initialization code.
      * 
-     * @param texture The texture to add.
+     * @param modid The mod ID to associate with the texture.
+     * @param texturePath The path to the texture to add.
+     * @param name The name to associate with the texture.
      */
+    public static Texture registerTexture(String modid, String texturePath, String name) {
+        return registerTexture(new Texture(modid, texturePath, name));
+    }
+
     public static Texture registerTexture(String texturePath, String name) {
         return registerTexture(new Texture(texturePath, name));
     }
@@ -78,16 +84,20 @@ public class HitIndicatorTextures {
         private static final int DEFAULT_SIZE = 50;
 
         public Texture(String texturePath, String name) {
-            this(texturePath, name, DEFAULT_SIZE, DEFAULT_SIZE);
+            this(Constants.MOD_ID, texturePath, name, DEFAULT_SIZE, DEFAULT_SIZE);
         }
 
-        public Texture(String texturePath, String name, int textureWidth, int textureHeight) {
+        public Texture(String modid, String texturePath, String name) {
+            this(modid, texturePath, name, DEFAULT_SIZE, DEFAULT_SIZE);
+        }
+
+        public Texture(String modid, String texturePath, String name, int textureWidth, int textureHeight) {
             this.TEXTURE_PATH = texturePath;
             this.NAME = name;
             this.TEXTURE_WIDTH = textureWidth;
             this.TEXTURE_HEIGHT = textureHeight;
 
-            this.RESOURCE_LOCATION = new ResourceLocation(Constants.MOD_ID, TEXTURE_PATH);
+            this.RESOURCE_LOCATION = new ResourceLocation(modid, TEXTURE_PATH);
         }
 
         public String getName() {
