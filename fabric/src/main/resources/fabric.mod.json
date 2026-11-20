@@ -17,6 +17,9 @@
     "entrypoints": {
         "main": [
             "dev.dragonofshuu.shuuhitindication.ShuuMod"
+        ],
+        "client": [
+            "dev.dragonofshuu.shuuhitindication.ShuuModClient"
         ]
     },
     "mixins": [

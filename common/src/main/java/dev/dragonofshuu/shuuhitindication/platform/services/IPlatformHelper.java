@@ -1,5 +1,7 @@
 package dev.dragonofshuu.shuuhitindication.platform.services;
 
+import java.nio.file.Path;
+
 public interface IPlatformHelper {
 
     /**
@@ -33,4 +35,6 @@ public interface IPlatformHelper {
 
         return isDevelopmentEnvironment() ? "development" : "production";
     }
+
+    Path getConfigDirectory();
 }

@@ -2,7 +2,7 @@ package dev.dragonofshuu.shuuhitindication.platform;
 
 import java.util.ServiceLoader;
 
-import dev.dragonofshuu.shuuhitindication.Constants;
+import dev.dragonofshuu.shuuhitindication.platform.services.INetworkHelper;
 import dev.dragonofshuu.shuuhitindication.platform.services.IPlatformHelper;
 
 // Service loaders are a built-in Java feature that allow us to locate implementations of an interface that vary from one
@@ -14,6 +14,7 @@ public class Services {
     // For example this can be used to check if the code is running on Forge vs Fabric, or to ask the modloader if another
     // mod is loaded.
     public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
+    public static final INetworkHelper NETWORK = load(INetworkHelper.class);
 
     // This code is used to load a service for the current environment. Your implementation of the service must be defined
     // manually by including a text file in META-INF/services named with the fully qualified class name of the service.
@@ -24,7 +25,6 @@ public class Services {
         final T loadedService = ServiceLoader.load(clazz)
                 .findFirst()
                 .orElseThrow(() -> new NullPointerException("Failed to load service for " + clazz.getName()));
-        Constants.LOG.debug("Loaded {} for service {}", loadedService, clazz);
         return loadedService;
     }
 }
