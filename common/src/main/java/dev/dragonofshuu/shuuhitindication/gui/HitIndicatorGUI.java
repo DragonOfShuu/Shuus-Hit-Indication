@@ -6,21 +6,25 @@ import com.mojang.math.Axis;
 import dev.dragonofshuu.shuuhitindication.HitIndicatorOrchestrator;
 import dev.dragonofshuu.shuuhitindication.ShuuConfig;
 import dev.dragonofshuu.shuuhitindication.HitIndicatorOrchestrator.HitIndicator;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
 
 public class HitIndicatorGUI {
-    public static void render(GuiGraphics guiGraphics, float partialTick, int screenWidth, int screenHeight) {
+    public static void render(GuiGraphics guiGraphics, DeltaTracker partialTick) {
+        int screenWidth = guiGraphics.guiWidth();
+        int screenHeight = guiGraphics.guiHeight();
+
         if (!ShuuConfig.isHitIndicationEnabled()) return;
         boolean hasHit = HitIndicatorOrchestrator.hasHit();
         if (!hasHit) return;
         
         HitIndicatorOrchestrator.getHitIndicators().forEach((hit) -> {
-            renderHitIndicator(guiGraphics, partialTick, screenWidth, screenHeight, hit);
+            renderHitIndicator(guiGraphics, partialTick.getGameTimeDeltaPartialTick(true), screenWidth, screenHeight, hit);
         });
     }
-    
+
     public static void renderHitIndicator(
         GuiGraphics guiGraphics, float partialTick, int screenWidth, int screenHeight,
         HitIndicator hit) {

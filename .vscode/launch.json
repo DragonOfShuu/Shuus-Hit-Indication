@@ -3,6 +3,22 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Fabric -- Attach to Minecraft",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": 5005,
+      "projectName": "fabric"
+    },
+    {
+      "type": "java",
+      "name": "Forge -- Attach to Minecraft",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": 5005,
+      "projectName": "forge"
+    },
+    {
+      "type": "java",
       "request": "launch",
       "name": "NeoForge Client (:neoforge)",
       "presentation": {

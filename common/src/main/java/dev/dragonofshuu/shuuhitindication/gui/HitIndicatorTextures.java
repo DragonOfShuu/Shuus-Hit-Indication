@@ -97,7 +97,7 @@ public class HitIndicatorTextures {
             this.TEXTURE_WIDTH = textureWidth;
             this.TEXTURE_HEIGHT = textureHeight;
 
-            this.RESOURCE_LOCATION = new ResourceLocation(modid, TEXTURE_PATH);
+            this.RESOURCE_LOCATION = ResourceLocation.fromNamespaceAndPath(modid, TEXTURE_PATH);
         }
 
         public String getName() {
