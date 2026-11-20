@@ -11,11 +11,11 @@
     },
     {
       "type": "java",
-      "name": "Forge -- Attach to Minecraft",
+      "name": "NeoForge -- Attach to Minecraft",
       "request": "attach",
       "hostName": "localhost",
       "port": 5005,
-      "projectName": "forge"
+      "projectName": "neoforge"
     },
     {
       "type": "java",

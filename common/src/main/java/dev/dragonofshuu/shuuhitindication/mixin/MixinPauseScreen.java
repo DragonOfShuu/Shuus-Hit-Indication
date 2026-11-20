@@ -18,7 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 @Mixin(PauseScreen.class)
 public abstract class MixinPauseScreen extends Screen {
     private static final ResourceLocation HIT_INDICATOR_SETTINGS_ICON = ResourceLocation
-            .fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/hit-indicator-options.png");
+            .fromNamespaceAndPath(Constants.MOD_ID, "hit-indicator-options/button");
     private static final int HIT_INDICATOR_SETTINGS_ICON_SIZE = 10;
     private static final int HIT_INDICATOR_SETTINGS_ICON_SCREEN_PADDING = 10;
 
