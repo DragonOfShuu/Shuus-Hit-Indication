@@ -2,7 +2,6 @@ package dev.dragonofshuu.shuuhitindication.platform;
 
 import java.util.ServiceLoader;
 
-import dev.dragonofshuu.shuuhitindication.Constants;
 import dev.dragonofshuu.shuuhitindication.platform.services.IPlatformHelper;
 import dev.dragonofshuu.shuuhitindication.platform.services.INetworkHelper;
 
