@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 import dev.dragonofshuu.shuuhitindication.ShuuConfig;
 import dev.dragonofshuu.shuuhitindication.gui.components.Slider;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.layouts.GridLayout;
@@ -39,13 +39,13 @@ public class HitIndicatorAdvancedOptionsScreen extends Screen {
                 .builder(CommonComponents.GUI_DONE, button -> this.minecraft.setScreen(this.previousScreen)).width(BASE_WIDTH*2).build(), 2);
 
         rowHelper.addChild(CycleButton
-                .<Boolean>builder(value -> value ? CommonComponents.GUI_YES : CommonComponents.GUI_NO)
-                .withValues(true, false).withInitialValue(ShuuConfig.isExternalDamageOnly()).create(0, 0, BASE_WIDTH-4,
+                .<Boolean>builder(value -> value ? CommonComponents.GUI_YES : CommonComponents.GUI_NO, () -> ShuuConfig.isExternalDamageOnly())
+                .withValues(true, false).create(0, 0, BASE_WIDTH-4,
                         20, IS_EXTERNAL_DAMAGE_ONLY, (button, value) -> ShuuConfig.setExternalDamageOnly(value)));
 
         rowHelper.addChild(CycleButton
-                .<Integer>builder(value -> Component.literal(value.toString()))
-                .withValues(1, 2, 3, 4, 5, 6, 8, 10, 12).withInitialValue(ShuuConfig.getMaximumHits()).create(0, 0,
+                .<Integer>builder(value -> Component.literal(value.toString()), () -> ShuuConfig.getMaximumHits())
+                .withValues(1, 2, 3, 4, 5, 6, 8, 10, 12).create(0, 0,
                         BASE_WIDTH-4,
                         20, Component.translatable("screen.shuuhitindication.advanced_options.maximum_hits"),
                         (button, value) -> ShuuConfig.setMaximumHits(value)));
@@ -62,9 +62,9 @@ public class HitIndicatorAdvancedOptionsScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
-        super.render(guiGraphics, mouseX, mouseY, partialTick);
+    public void extractRenderState(GuiGraphicsExtractor guiGraphicsExtractor, int mouseX, int mouseY, float partialTick) {
+        // this.extractBackground(guiGraphicsExtractor, mouseX, mouseY, partialTick);
+        super.extractRenderState(guiGraphicsExtractor, mouseX, mouseY, partialTick);
     }
 
     @Override

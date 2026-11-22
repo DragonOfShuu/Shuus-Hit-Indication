@@ -1,6 +1,6 @@
 package dev.dragonofshuu.shuuhitindication.gui.components;
 
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
@@ -33,16 +33,16 @@ public class Rect extends AbstractWidget {
     }
 
     @Override
-    protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    protected void extractWidgetRenderState(GuiGraphicsExtractor GuiGraphicsExtractor, int mouseX, int mouseY, float partialTick) {
         int x = this.getX();
         int y = this.getY();
         int w = this.getWidth();
         int h = this.getHeight();
         
-        guiGraphics.fill(x, y, x + w, y + h, this.color);
+        GuiGraphicsExtractor.fill(x, y, x + w, y + h, this.color);
 
         if (this.borderColor != 0)
-            guiGraphics.renderOutline(x, y, w, h, this.borderColor);
+            GuiGraphicsExtractor.outline(x, y, w, h, this.borderColor);
     }
 
     @Override

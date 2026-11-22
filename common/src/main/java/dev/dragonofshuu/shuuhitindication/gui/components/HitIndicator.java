@@ -2,7 +2,7 @@ package dev.dragonofshuu.shuuhitindication.gui.components;
 
 import dev.dragonofshuu.shuuhitindication.gui.HitIndicatorGUI;
 import dev.dragonofshuu.shuuhitindication.gui.HitIndicatorSettings;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
@@ -17,14 +17,14 @@ public class HitIndicator extends AbstractWidget {
     }
 
     @Override
-    protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    protected void extractWidgetRenderState(GuiGraphicsExtractor GuiGraphicsExtractor, int mouseX, int mouseY, float partialTick) {
         this.settings.update();
         this.settings.scale = 1f;
-        HitIndicatorGUI.renderHitIndicator(guiGraphics, partialTick, this.width, this.height, (int) this.settings.duration, this.settings, 0, this.getX(), this.getY());
+        HitIndicatorGUI.renderHitIndicator(GuiGraphicsExtractor, partialTick, this.width, this.height, (int) this.settings.duration, this.settings, 0, this.getX(), this.getY());
     }
 
     @Override
     protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
+
     }
-    
 }

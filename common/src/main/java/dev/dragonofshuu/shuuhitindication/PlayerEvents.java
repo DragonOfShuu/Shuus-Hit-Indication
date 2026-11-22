@@ -1,6 +1,7 @@
 package dev.dragonofshuu.shuuhitindication;
 
 import dev.dragonofshuu.shuuhitindication.networking.ShuuNetworking;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
@@ -15,7 +16,7 @@ public class PlayerEvents {
     public static void onPlayerDamage(Player player, DamageSource damageSource, float amount) {
         if (player.level().isClientSide())
             return;
-        if (player.isInvulnerableTo(damageSource))
+        if (player.isInvulnerableTo((ServerLevel) player.level(), damageSource))
             return;
         var causingEntity = damageSource.getEntity();
         var damageSourcePosition = causingEntity == null ? damageSource.getSourcePosition() : causingEntity.position();
