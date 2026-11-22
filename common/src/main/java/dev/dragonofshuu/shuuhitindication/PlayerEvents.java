@@ -13,10 +13,10 @@ public class PlayerEvents {
      * @param damageSource The source of the damage.
      * @param amount The amount of damage taken.
      */
-    public static void onPlayerDamage(Player player, DamageSource damageSource, float amount) {
+    public static void onPlayerDamage(ServerLevel level, Player player, DamageSource damageSource, float amount) {
         if (player.level().isClientSide())
             return;
-        if (player.isInvulnerableTo((ServerLevel) player.level(), damageSource))
+        if (player.isInvulnerableTo(level, damageSource))
             return;
         var causingEntity = damageSource.getEntity();
         var damageSourcePosition = causingEntity == null ? damageSource.getSourcePosition() : causingEntity.position();

@@ -43,10 +43,10 @@ public class HitIndicatorOrchestrator {
             DelayedClientTask.cancelTask(getWaitTask().ID);
         }
 
-        public Float getHitRotation(Player relativeTo) {
+        public Float getHitRotation(Player relativeTo, float partialTick) {
             if (hitPosition == null) return null;
-            float playerYaw = relativeTo.getYRot();
-            Vec3 direction = relativeTo.position().subtract(hitPosition);
+            float playerYaw = relativeTo.getViewYRot(partialTick);
+            Vec3 direction = relativeTo.getPosition(partialTick).subtract(hitPosition);
             return (float) Math.atan2(direction.x, -direction.z) - (float) Math.toRadians(playerYaw);
         }
     }

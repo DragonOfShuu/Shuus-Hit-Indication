@@ -28,7 +28,7 @@ public class HitIndicatorGUI {
         GuiGraphicsExtractor GuiGraphicsExtractor, float partialTick, int screenWidth, int screenHeight,
         HitIndicator hit) {
             LocalPlayer player = Minecraft.getInstance().player;
-            renderHitIndicator(GuiGraphicsExtractor, partialTick, screenWidth, screenHeight, hit.getWaitTask().RemainingTicks, HitIndicatorSettings.fromConfig(), hit.getHitRotation(player), 0, 0);
+            renderHitIndicator(GuiGraphicsExtractor, partialTick, screenWidth, screenHeight, hit.getWaitTask().RemainingTicks, HitIndicatorSettings.fromConfig(), hit.getHitRotation(player, partialTick), 0, 0);
     }
 
     public static void renderHitIndicator(

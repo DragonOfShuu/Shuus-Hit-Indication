@@ -5,7 +5,7 @@
       "type": "java",
       "name": "Fabric -- Attach to Minecraft",
       "request": "attach",
-      "hostName": "::1",
+      "hostName": "127.0.0.1",
       "port": 5005,
       "projectName": "fabric"
     },
