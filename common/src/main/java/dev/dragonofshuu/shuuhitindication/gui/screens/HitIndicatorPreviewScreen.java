@@ -39,7 +39,7 @@ public class HitIndicatorPreviewScreen extends Screen {
     @Override
     protected void init() {
         this.addRenderableWidget(
-                Button.builder(CommonComponents.GUI_DONE, button -> this.minecraft.setScreen(this.previousScreen))
+                Button.builder(CommonComponents.GUI_DONE, button -> this.minecraft.gui.setScreen(this.previousScreen))
                         .size(50, 20).build());
         this.addRenderableWidget(Button
                 .builder(Component.literal("Toggle Background"),
@@ -69,7 +69,7 @@ public class HitIndicatorPreviewScreen extends Screen {
 
     @Override
     public void onClose() {
-        this.minecraft.setScreen(this.previousScreen);
+        this.minecraft.gui.setScreen(this.previousScreen);
     }
 
     @Override

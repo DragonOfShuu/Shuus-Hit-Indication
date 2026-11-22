@@ -55,7 +55,7 @@ public class HitIndicatorOptionsScreen extends Screen {
                 rowHelper.addChild(Button
                                 .builder(ADVANCED_SCREEN_LINK,
                                                 button -> this.minecraft
-                                                                .setScreen(new HitIndicatorAdvancedOptionsScreen(this)))
+                                                                .gui.setScreen(new HitIndicatorAdvancedOptionsScreen(this)))
                                 .width(BASE_WIDTH - 4).build(), 1, gridLayout.newCellSettings());
 
                 rowHelper.addChild(CycleButton.<HitIndicatorTextures.Texture>builder(
@@ -103,11 +103,11 @@ public class HitIndicatorOptionsScreen extends Screen {
                 rowHelper.addChild(panel.build(), 2, gridLayout.newCellSettings().alignHorizontallyCenter());
                 rowHelper.addChild(
                                 Button.builder(VISUALIZE_SCREEN_LINK,
-                                                button -> this.minecraft.setScreen(new HitIndicatorPreviewScreen(this)))
+                                                button -> this.minecraft.gui.setScreen(new HitIndicatorPreviewScreen(this)))
                                                 .width(60).build(),
                                 2, gridLayout.newCellSettings().alignHorizontallyCenter());
 
-                rowHelper.addChild(Button.builder(DONE, (button) -> this.minecraft.setScreen(this.previousScreen))
+                rowHelper.addChild(Button.builder(DONE, (button) -> this.minecraft.gui.setScreen(this.previousScreen))
                                 .width(BASE_WIDTH * 2).build(), 2);
 
                 gridLayout.arrangeElements();
@@ -129,6 +129,6 @@ public class HitIndicatorOptionsScreen extends Screen {
         }
 
         public void onClose() {
-                this.minecraft.setScreen(this.previousScreen);
+                this.minecraft.gui.setScreen(this.previousScreen);
         }
 }

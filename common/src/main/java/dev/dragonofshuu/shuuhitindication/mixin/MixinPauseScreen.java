@@ -33,7 +33,7 @@ public abstract class MixinPauseScreen extends Screen {
             HIT_INDICATOR_SETTINGS_ICON_SCREEN_PADDING, 
             this.height - HIT_INDICATOR_SETTINGS_ICON_SCREEN_PADDING - HIT_INDICATOR_SETTINGS_ICON_SIZE,
             HIT_INDICATOR_SETTINGS_ICON_SIZE,
-            HIT_INDICATOR_SETTINGS_ICON_SIZE, sprites, button -> this.minecraft.setScreen(new HitIndicatorOptionsScreen(this))
+            HIT_INDICATOR_SETTINGS_ICON_SIZE, sprites, button -> this.minecraft.gui.setScreen(new HitIndicatorOptionsScreen(this))
             ));
     }
 }

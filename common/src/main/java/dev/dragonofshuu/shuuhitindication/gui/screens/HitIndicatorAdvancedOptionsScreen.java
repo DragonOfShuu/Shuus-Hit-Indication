@@ -36,7 +36,7 @@ public class HitIndicatorAdvancedOptionsScreen extends Screen {
         GridLayout.RowHelper rowHelper = gridLayout.createRowHelper(2);
 
         rowHelper.addChild(Button
-                .builder(CommonComponents.GUI_DONE, button -> this.minecraft.setScreen(this.previousScreen)).width(BASE_WIDTH*2).build(), 2);
+                .builder(CommonComponents.GUI_DONE, button -> this.minecraft.gui.setScreen(this.previousScreen)).width(BASE_WIDTH*2).build(), 2);
 
         rowHelper.addChild(CycleButton
                 .<Boolean>builder(value -> value ? CommonComponents.GUI_YES : CommonComponents.GUI_NO, () -> ShuuConfig.isExternalDamageOnly())
@@ -69,6 +69,6 @@ public class HitIndicatorAdvancedOptionsScreen extends Screen {
 
     @Override
     public void onClose() {
-        this.minecraft.setScreen(this.previousScreen);
+        this.minecraft.gui.setScreen(previousScreen);
     }
 }
