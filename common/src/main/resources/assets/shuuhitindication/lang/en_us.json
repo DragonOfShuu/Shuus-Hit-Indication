@@ -1,0 +1,22 @@
+{
+    "narrator.button.hit_indicator_settings": "Hit Indicator Settings",
+
+    "screen.shuuhitindication.hit_indicator_options": "Hit Indicator Options",
+    "screen.shuuhitindication.hit_enabled": "Hit Enabled",
+    "screen.shuuhitindication.hit_disabled": "Hit Disabled",
+    "screen.shuuhitindication.red_value": "Red Value",
+    "screen.shuuhitindication.green_value": "Green Value",
+    "screen.shuuhitindication.blue_value": "Blue Value",
+    "screen.shuuhitindication.alpha_value": "Alpha Value",
+    "screen.shuuhitindication.scale_value": "Scale",
+
+    "screen.shuuhitindication.hit_indicator_preview": "Hit Indicator Preview",
+    "screen.shuuhitindication.visualize_screen_link": "Visualize...",
+    "screen.shuuhitindication.rotation": "Rotation",
+
+    "screen.shuuhitindication.advanced_options": "Advanced Options",
+    "screen.shuuhitindication.advanced_screen_link": "Advanced...",
+    "screen.shuuhitindication.advanced_options.is_external_damage_only": "External Damage Only",
+    "screen.shuuhitindication.advanced_options.duration": "Duration",
+    "screen.shuuhitindication.advanced_options.maximum_hits": "Maximum Hits"
+}

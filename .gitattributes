@@ -12,5 +12,9 @@
 *.zip binary
 *.pyd binary
 *.cfg text eol=lf
+<<<<<<< HEAD
 *.jks binary
 *.ogg binary
+=======
+*.jks binary
+>>>>>>> origin/1.21.1
