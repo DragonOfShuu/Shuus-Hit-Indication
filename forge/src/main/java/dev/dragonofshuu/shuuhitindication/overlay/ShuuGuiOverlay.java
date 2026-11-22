@@ -7,7 +7,7 @@ import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 
 public class ShuuGuiOverlay {
     public static void register(RegisterGuiOverlaysEvent event) {
-        event.registerAbove(VanillaGuiOverlay.CROSSHAIR.id(), "hit_indicator",
+        event.registerBelow(VanillaGuiOverlay.HOTBAR.id(), "hit_indicator",
                 (gui, guiGraphics, partialTick, screenWidth, screenHeight) -> HitIndicatorGUI.render(guiGraphics,
                         partialTick, screenWidth, screenHeight));
     }
