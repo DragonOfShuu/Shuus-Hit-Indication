@@ -16,7 +16,10 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "com.example.examplemod.ExampleMod"
+            "dev.dragonofshuu.shuuhitindication.ShuuMod"
+        ],
+        "client": [
+            "dev.dragonofshuu.shuuhitindication.ShuuModClient"
         ]
     },
     "mixins": [
