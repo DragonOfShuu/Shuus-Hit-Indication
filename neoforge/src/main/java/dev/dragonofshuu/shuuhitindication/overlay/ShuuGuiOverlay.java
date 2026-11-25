@@ -12,6 +12,6 @@ public class ShuuGuiOverlay {
     public static final ResourceLocation HIT_INDICATOR_OVERLAY = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "hit_indicator_overlay");
 
     public static void register(RegisterGuiLayersEvent event) {
-        event.registerAbove(VanillaGuiLayers.CROSSHAIR, HIT_INDICATOR_OVERLAY, HitIndicatorGUI::render);
+        event.registerBelow(VanillaGuiLayers.HOTBAR, HIT_INDICATOR_OVERLAY, HitIndicatorGUI::render);
     }
 }

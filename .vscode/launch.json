@@ -28,11 +28,11 @@
       "projectName": "neoforge",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication-1.21.1/neoforge/build/moddev/clientRunProgramArgs.txt"
+        "@/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication/neoforge/build/moddev/clientRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication-1.21.1/neoforge/build/moddev/clientRunVmArgs.txt",
-        "-Dfml.modFolders\u003dshuuhitindication%%/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication-1.21.1/neoforge/bin/main"
+        "@/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication/neoforge/build/moddev/clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dshuuhitindication%%/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication/neoforge/bin/main"
       ],
       "cwd": "${workspaceFolder}/neoforge/run",
       "console": "internalConsole",
@@ -49,11 +49,11 @@
       "projectName": "neoforge",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication-1.21.1/neoforge/build/moddev/dataRunProgramArgs.txt"
+        "@/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication/neoforge/build/moddev/dataRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication-1.21.1/neoforge/build/moddev/dataRunVmArgs.txt",
-        "-Dfml.modFolders\u003dshuuhitindication%%/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication-1.21.1/neoforge/bin/main"
+        "@/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication/neoforge/build/moddev/dataRunVmArgs.txt",
+        "-Dfml.modFolders\u003dshuuhitindication%%/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication/neoforge/bin/main"
       ],
       "cwd": "${workspaceFolder}/neoforge/run",
       "console": "internalConsole",
@@ -70,11 +70,11 @@
       "projectName": "neoforge",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication-1.21.1/neoforge/build/moddev/serverRunProgramArgs.txt"
+        "@/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication/neoforge/build/moddev/serverRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication-1.21.1/neoforge/build/moddev/serverRunVmArgs.txt",
-        "-Dfml.modFolders\u003dshuuhitindication%%/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication-1.21.1/neoforge/bin/main"
+        "@/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication/neoforge/build/moddev/serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dshuuhitindication%%/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication/neoforge/bin/main"
       ],
       "cwd": "${workspaceFolder}/neoforge/run",
       "console": "internalConsole",
