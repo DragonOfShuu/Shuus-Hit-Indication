@@ -13,11 +13,11 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 @Mixin(PauseScreen.class)
 public abstract class MixinPauseScreen extends Screen {
-    private static final ResourceLocation HIT_INDICATOR_SETTINGS_ICON = ResourceLocation
+    private static final Identifier HIT_INDICATOR_SETTINGS_ICON = Identifier
             .fromNamespaceAndPath(Constants.MOD_ID, "hit-indicator-options/button");
     private static final int HIT_INDICATOR_SETTINGS_ICON_SIZE = 10;
     private static final int HIT_INDICATOR_SETTINGS_ICON_SCREEN_PADDING = 10;

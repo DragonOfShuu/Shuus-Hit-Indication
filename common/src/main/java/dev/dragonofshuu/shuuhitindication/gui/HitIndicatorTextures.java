@@ -1,7 +1,7 @@
 package dev.dragonofshuu.shuuhitindication.gui;
 
 import dev.dragonofshuu.shuuhitindication.Constants;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -79,7 +79,7 @@ public class HitIndicatorTextures {
         private final int TEXTURE_WIDTH;
         private final int TEXTURE_HEIGHT;
 
-        private final ResourceLocation RESOURCE_LOCATION;
+        private final Identifier RESOURCE_LOCATION;
 
         private static final int DEFAULT_SIZE = 50;
 
@@ -97,7 +97,7 @@ public class HitIndicatorTextures {
             this.TEXTURE_WIDTH = textureWidth;
             this.TEXTURE_HEIGHT = textureHeight;
 
-            this.RESOURCE_LOCATION = ResourceLocation.fromNamespaceAndPath(modid, TEXTURE_PATH);
+            this.RESOURCE_LOCATION = Identifier.fromNamespaceAndPath(modid, TEXTURE_PATH);
         }
 
         public String getName() {
@@ -108,7 +108,7 @@ public class HitIndicatorTextures {
             return TEXTURE_PATH;
         }
 
-        public ResourceLocation getResourceLocation() {
+        public Identifier getIdentifier() {
             return RESOURCE_LOCATION;
         }
 

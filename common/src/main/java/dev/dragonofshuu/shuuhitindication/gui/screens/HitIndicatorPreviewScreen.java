@@ -8,6 +8,7 @@ import dev.dragonofshuu.shuuhitindication.ShuuConfig;
 import dev.dragonofshuu.shuuhitindication.gui.HitIndicatorGUI;
 import dev.dragonofshuu.shuuhitindication.gui.HitIndicatorSettings;
 import dev.dragonofshuu.shuuhitindication.gui.components.Slider;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -50,13 +51,11 @@ public class HitIndicatorPreviewScreen extends Screen {
     }
 
     @Override
-    public void render(net.minecraft.client.gui.GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         if (ShuuConfig.isShowBackground()) {
             guiGraphics.fill(0, 0, this.width, this.height, 0xFF000000);
         }
-        for (Renderable renderable : this.neoRenderables) {
-            renderable.render(guiGraphics, mouseX, mouseY, partialTick);
-        }
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
         HitIndicatorGUI.renderHitIndicator(guiGraphics, partialTick, this.width, this.height,
                 (int) this.settings.duration, this.settings, this.rotation, 0, 0);
     }
@@ -71,5 +70,10 @@ public class HitIndicatorPreviewScreen extends Screen {
     @Override
     public void onClose() {
         this.minecraft.setScreen(this.previousScreen);
+    }
+
+    @Override
+    public void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        // Nothing, no background
     }
 }

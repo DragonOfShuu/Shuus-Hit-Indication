@@ -25,6 +25,6 @@ public class HitIndicator extends AbstractWidget {
 
     @Override
     protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
+
     }
-    
 }
