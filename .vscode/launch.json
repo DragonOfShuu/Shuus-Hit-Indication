@@ -35,6 +35,7 @@
         "-Dfml.modFolders\u003dshuuhitindication%%/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication/neoforge/bin/main"
       ],
       "cwd": "${workspaceFolder}/neoforge/run",
+      "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
     },
@@ -56,6 +57,7 @@
         "-Dfml.modFolders\u003dshuuhitindication%%/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication/neoforge/bin/main"
       ],
       "cwd": "${workspaceFolder}/neoforge/run",
+      "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
     },
@@ -77,6 +79,7 @@
         "-Dfml.modFolders\u003dshuuhitindication%%/xdrive/Assets/Code/MinecraftMods/Shuus-Hit-Indication/neoforge/bin/main"
       ],
       "cwd": "${workspaceFolder}/neoforge/run",
+      "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
     }
